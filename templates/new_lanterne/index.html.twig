@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello NewLanterneController!{% endblock %}
+
+{% block body %}
+<section>
+		{{form_start(Newlanterne)}}
+		{{form_widget(Newlanterne)}}
+        <input type="submit">
+		{{form_end(Newlanterne) }}
+	</section>
+{% endblock %}

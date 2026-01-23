@@ -3,5 +3,18 @@
 {% block title %}Hello GalerieController!{% endblock %}
 
 {% block body %}
-
+<a href="{{ path('app_new_lanterne') }}">Ajouter votre lanterne</a>
+<section>
+		<ul>
+			{% for lanterne in lanterne %}
+				<li class="lanterne-card">
+					<p>{{ lanterne.image }}</p>
+					<p>{{ lanterne.name }}</p>
+					<p>{{ lanterne.prix }}</p>
+                    <p>{{lanterne.spe}}</p>
+                    <p>{{ lanterne.description}}</p>
+				</li>
+			{% endfor %}
+		</ul>
+	</section>
 {% endblock %}

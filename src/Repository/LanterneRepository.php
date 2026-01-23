@@ -40,4 +40,17 @@ class LanterneRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    /**
+     * @return Lanterne[] Returns an array of the first 4 Lanterne objects
+     */
+    public function findFour(): array
+    {
+        return $this->createQueryBuilder('l')
+            ->orderBy('l.id', 'DESC')
+            ->setMaxResults(4)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

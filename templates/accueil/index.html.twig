@@ -1,7 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AccueilController!{% endblock %}
+{% block title %}Hello AccueilController!
+{% endblock %}
 
 {% block body %}
-
+	<section>
+		<ul>
+			{% for lanterne in lanterne %}
+				<li class="lanterne-card">
+					<p>{{ lanterne.name }}
+					</p>
+                    <p>{{lanterne.spe}}</p>
+                    <p>{{ lanterne.description|length > 30 ? lanterne.description[:30] ~ '...' : lanterne.description }}</p>
+				</li>
+			{% endfor %}
+		</ul>
+	</section>
+	<section>
+		{{form_start(Contact)}}
+		{{form_widget(Contact)}}
+		{{form_end(Contact) }}
+	</section>
 {% endblock %}

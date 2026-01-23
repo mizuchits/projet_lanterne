@@ -2,11 +2,11 @@
 
 namespace App\Form;
 
-use Vich\UploaderBundle\Entity\File;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Validator\Constraints\File;
 
 class NewLanterneType extends AbstractType
 {
@@ -16,8 +16,8 @@ class NewLanterneType extends AbstractType
             ->add('name')
             ->add('spe')
             ->add('description')
-            ->add('price')
-            ->add('imageFile', FileType::class, [
+            ->add('prix')
+            ->add('image', FileType::class, [
                 'label' => 'Image de la lanterne',
                 'required' => false,
                 'constraints' => [
