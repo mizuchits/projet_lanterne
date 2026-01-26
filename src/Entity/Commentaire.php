@@ -13,8 +13,8 @@ class Commentaire
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $text = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $content = null;
 
     #[ORM\ManyToOne(inversedBy: 'commentaires')]
     private ?Lanterne $lanterne = null;
@@ -27,14 +27,14 @@ class Commentaire
         return $this->id;
     }
 
-    public function getText(): ?string
+    public function getContent(): ?string
     {
-        return $this->text;
+        return $this->content;
     }
 
-    public function setText(string $text): static
+    public function setContent(?string $content): static
     {
-        $this->text = $text;
+        $this->content = $content;
 
         return $this;
     }

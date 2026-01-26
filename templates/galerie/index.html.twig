@@ -1,20 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello GalerieController!{% endblock %}
+{% block title %}Hello GalerieController!
+{% endblock %}
 
 {% block body %}
-<a href="{{ path('app_new_lanterne') }}">Ajouter votre lanterne</a>
-<section>
-		<ul>
-			{% for lanterne in lanterne %}
-				<li class="lanterne-card">
-					<p>{{ lanterne.image }}</p>
-					<p>{{ lanterne.name }}</p>
-					<p>{{ lanterne.prix }}</p>
-                    <p>{{lanterne.spe}}</p>
-                    <p>{{ lanterne.description}}</p>
-				</li>
-			{% endfor %}
-		</ul>
-	</section>
+	<div class="container">
+		<div class="galerie_title">
+			<h2>Galerie des lanternes</h2>
+			<a href="{{ path('app_new_lanterne') }}" class="btn">Ajouter votre lanterne</a>
+		</div>
+		<section>
+			<ul>
+				{% for lanterne in lanterne %}
+					<li class="lanterne-card">
+						<img src="{{ asset('uploads/images/' ~ lanterne.imageName) }}" alt="Image de la lanterne" class="card_image">
+						<p>{{ lanterne.name }}</p>
+						<p>{{ lanterne.prix }}</p>
+						<p>{{lanterne.spe}}</p>
+						<p>{{ lanterne.description}}</p>
+						<div class="btn_container">
+							<a href="{{path('app_detail',{'id' : lanterne.id})}}" class="btn">Voir plus</a>
+						{% if app.user.id == lanterne.user.id %}
+								<a href="{{path('app_edit_lanterne',{'id' : lanterne.id})}}" class="btn btn-edit">Éditer</a>
+								<a href="{{path('app_delete_lanterne',{'id' : lanterne.id})}}" class="btn btn-delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette lanterne ?');">Supprimer</a>
+							{% endif %}
+						</div>
+					</li>
+				{% endfor %}
+			</ul>
+		</section>
+	</div>
 {% endblock %}

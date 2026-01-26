@@ -1,0 +1,19 @@
+// Section styles
+section {
+    padding: 40px 0;
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        justify-content: center;
+    }
+
+    li {
+        flex: 0 0 auto;
+        width: 350px;
+    }
+}

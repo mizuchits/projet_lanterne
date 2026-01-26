@@ -1,0 +1,138 @@
+// Comments section styles
+.card-commentaires {
+	white-space: normal;
+	padding: 40px;
+	background-color: white;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+	h3 {
+		font-size: 24px;
+		color: #333;
+		margin: 0 0 30px 0;
+		padding-bottom: 15px;
+		border-bottom: 2px solid #E3F2FD;
+	}
+
+	@media (max-width: 768px) {
+		padding: 20px;
+	}
+}
+
+.comments-list {
+	margin-bottom: 40px;
+}
+
+.commentary {
+	padding: 15px;
+	margin-bottom: 15px;
+	background-color: #f9f9f9;
+	border-left: 4px solid #BA9B61;
+	border-radius: 4px;
+	transition: box-shadow 0.3s ease;
+
+	&:hover {
+		box-shadow: 0 2px 8px rgba(186, 155, 97, 0.15);
+	}
+}
+
+.comment-header {
+	margin-bottom: 10px;
+
+	strong {
+		color: #BA9B61;
+		font-size: 14px;
+	}
+}
+
+.commentary-end {
+	margin: 10px 0 0 0;
+	color: #555;
+	line-height: 1.6;
+}
+
+.no-comments {
+	text-align: center;
+	padding: 30px 0;
+	color: #999;
+	font-style: italic;
+}
+
+.comment-form-section {
+	border-top: 2px solid #E3F2FD;
+	padding-top: 30px;
+	margin-top: 30px;
+
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+
+		> div {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+		}
+
+		label {
+			font-weight: 500;
+			color: #333;
+			font-size: 14px;
+		}
+
+		textarea {
+			width: 100%;
+			padding: 12px;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+			font-family: inherit;
+			font-size: 14px;
+			resize: vertical;
+			min-height: 100px;
+			transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+			&:focus {
+				outline: none;
+				border-color: #BA9B61;
+				box-shadow: 0 0 0 3px rgba(186, 155, 97, 0.1);
+			}
+		}
+
+		button {
+			background-color: #BA9B61;
+			color: white;
+			padding: 12px 30px;
+			border: none;
+			border-radius: 4px;
+			font-size: 14px;
+			font-weight: 500;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+			align-self: flex-start;
+
+			&:hover {
+				background-color: #9d7d47;
+			}
+
+			&:active {
+				transform: scale(0.98);
+			}
+		}
+	}
+}
+
+.login-to-comment {
+	text-align: center;
+	padding: 30px 0;
+	color: #666;
+
+	a {
+		color: #BA9B61;
+		text-decoration: none;
+		font-weight: 500;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}

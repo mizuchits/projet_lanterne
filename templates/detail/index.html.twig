@@ -1,7 +1,62 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DetailController!{% endblock %}
+{% block title %}{{ lanterne.name }} - Détail{% endblock %}
 
 {% block body %}
+<div class="container">
+	<div class="detail-container">
+		<div class="detail-image">
+			<img src="{{ asset('uploads/images/' ~ lanterne.imageName) }}" alt="Image de la lanterne" class="detail-img">
+		</div>
+		
+		<div class="detail-info">
+			<h1>{{ lanterne.name }}</h1>
+			<p class="detail-price">{{ lanterne.prix }}€</p>
+			
+			<div class="detail-specs">
+				<h3>Caractéristiques</h3>
+				<p><strong>Spécialité :</strong> {{ lanterne.spe }}</p>
+				<p><strong>Description :</strong> {{ lanterne.description }}</p>
+			</div>
 
+			<div class="detail-owner">
+				<p><strong>Vendeur :</strong> {{ lanterne.user.username }}</p>
+			</div>
+
+			<div class="btn_container">
+				{% if app.user and lanterne.user and app.user.id == lanterne.user.id %}
+					<a href="{{path('app_edit_lanterne',{'id' : lanterne.id})}}" class="btn btn-edit">Éditer</a>
+					<a href="{{path('app_delete_lanterne',{'id' : lanterne.id})}}" class="btn btn-delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette lanterne ?');">Supprimer</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+	<div class="card-commentaires">
+		<h3>Commentaires</h3>
+		
+		{% if lanterne.commentaires|length > 0 %}
+			<div class="comments-list">
+				{% for commentaire in lanterne.commentaires %}
+					<div class="commentary">
+						<div class="comment-header">
+							<strong>{{ commentaire.user.username }}</strong>
+						</div>
+						<p class="commentary-end">{{ commentaire.content }}</p>
+					</div>
+				{% endfor %}
+			</div>
+		{% else %}
+			<p class="no-comments">Aucun commentaire pour le moment.</p>
+		{% endif %}
+
+		{% if is_granted('ROLE_USER') %}
+			<div class="comment-form-section">
+				{{ form(Commentaire) }}
+			</div>
+		{% else %}
+			<p class="login-to-comment"><a href="{{ path('app_login') }}">Connectez-vous</a> pour ajouter un commentaire.</p>
+		{% endif %}
+	</div>
+</div>
 {% endblock %}

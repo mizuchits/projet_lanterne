@@ -1,0 +1,82 @@
+.accueil-form {
+    margin-top: 40px;
+    padding: 40px 0;
+
+    h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+        font-size: 28px;
+        font-weight: 600;
+    }
+
+    form {
+        max-width: 500px;
+        margin: 0 auto;
+
+        div {
+            margin-bottom: 15px;
+
+            label {
+                display: block;
+                margin-bottom: 5px;
+                color: #333;
+                font-weight: 500;
+                font-size: 14px;
+            }
+
+            input,
+            textarea {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 14px;
+
+                &:focus {
+                    outline: none;
+                    border-color: #BA9B61;
+                }
+            }
+
+            textarea {
+                resize: vertical;
+                min-height: 100px;
+            }
+        }
+    }
+}
+
+.btn {
+    display: inline-block;
+    background-color: #BA9B61;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #9d7d47;
+    }
+
+    &.btn-edit {
+        background-color: #4CAF50;
+
+        &:hover {
+            background-color: #45a049;
+        }
+    }
+
+    &.btn-delete {
+        background-color: #f44336;
+
+        &:hover {
+            background-color: #da190b;
+        }
+    }
+}

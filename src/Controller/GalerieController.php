@@ -13,7 +13,7 @@ final class GalerieController extends AbstractController
     public function index(LanterneRepository $lanterneRepository): Response
     {
 
-        $lanterne = $lanterneRepository->findFour();
+        $lanterne = $lanterneRepository->findAll();
         return $this->render('Galerie/index.html.twig', [
             'lanterne' => $lanterne,
         ]);

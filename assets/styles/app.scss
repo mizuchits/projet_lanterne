@@ -1,3 +1,18 @@
-body {
-    background-color: skyblue;
-}
+@use './layout/body.scss';
+@use './layout/header.scss';
+@use './layout/card.scss';
+@use './layout/section.scss';
+@use './layout/accueil.scss';
+@use './layout/galerie.scss';
+@use './layout/detail.scss';
+@use './layout/footer.scss';
+@use './layout/forms.scss';
+@use './layout/comments.scss';
+
+
+
+
+
+
+
+

@@ -2,11 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\LanterneRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\LanterneRepository;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
+#[UniqueEntity(fields: ['name'], message: 'Un masque avec ce nom existe déjà.')]
+#[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: LanterneRepository::class)]
 class Lanterne
 {
@@ -27,8 +32,14 @@ class Lanterne
     #[ORM\Column]
     private ?int $prix = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $image = null;
+    #[Vich\UploadableField(mapping: 'images', fileNameProperty: 'imageName')]
+    private ?file $imageFile = NULL;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $imageName = NULL;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updateAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'lanternes')]
     #[ORM\JoinColumn(nullable: false)]
@@ -98,16 +109,28 @@ class Lanterne
         return $this;
     }
 
-    public function getImage(): ?string
+    public function setImageFile(?File $imageFile = NULL)  
     {
-        return $this->image;
+        $this->imageFile = $imageFile;
+
+        if ($imageFile) {
+            $this->updateAt = new \DateTimeImmutable();
+        }
     }
 
-    public function setImage(string $image): static
+    public function getImageFile(): ?file
     {
-        $this->image = $image;
+        return $this->imageFile;
+    }
 
-        return $this;
+    public function setImageName(?string $imageName): void
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
     }
 
     public function getUser(): ?user

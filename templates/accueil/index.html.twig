@@ -4,21 +4,33 @@
 {% endblock %}
 
 {% block body %}
-	<section>
-		<ul>
-			{% for lanterne in lanterne %}
-				<li class="lanterne-card">
-					<p>{{ lanterne.name }}
-					</p>
-                    <p>{{lanterne.spe}}</p>
-                    <p>{{ lanterne.description|length > 30 ? lanterne.description[:30] ~ '...' : lanterne.description }}</p>
-				</li>
-			{% endfor %}
-		</ul>
-	</section>
-	<section>
-		{{form_start(Contact)}}
-		{{form_widget(Contact)}}
-		{{form_end(Contact) }}
-	</section>
+	<div class="container">
+		<section>
+			<h2>Nouveauté</h2>
+			<ul>
+				{% for lanterne in lanterne %}
+					<li class="lanterne-card">
+						<img src="{{ asset('uploads/images/' ~ lanterne.imageName) }}" alt="Image de la lanterne" class="card_image">
+						<p>{{ lanterne.name }}
+						</p>
+						<p>{{lanterne.spe}}</p>
+						<p>{{ lanterne.description|length > 30 ? lanterne.description[:30] ~ '...' : lanterne.description }}</p>
+						<div class="btn_container">
+							<a href="{{path('app_detail',{'id' : lanterne.id})}}" class="btn">Voir plus</a>
+						{% if app.user and lanterne.user and app.user.id == lanterne.user.id %}
+								<a href="{{path('app_edit_lanterne',{'id' : lanterne.id})}}" class="btn btn-edit">Éditer</a>
+								<a href="{{path('app_delete_lanterne',{'id' : lanterne.id})}}" class="btn btn-delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette lanterne ?');">Supprimer</a>
+							{% endif %}
+						</div>
+					</li>
+				{% endfor %}
+			</ul>
+		</section>
+		<section class="accueil-form">
+			<h2>Contacter Nous</h2>
+			{{form_start(Contact)}}
+			{{form_widget(Contact)}}
+			{{form_end(Contact) }}
+		</section>
+	</div>
 {% endblock %}

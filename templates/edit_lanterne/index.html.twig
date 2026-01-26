@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Éditer Lanterne{% endblock %}
+
+{% block body %}
+<div class="container">
+	<div class="form-container">
+		<h2>Éditer votre lanterne</h2>
+		{{ form_start(form) }}
+		{{ form_widget(form) }}
+		<button type="submit" class="btn">Modifier</button>
+		{{ form_end(form) }}
+	</div>
+</div>
+{% endblock %}
