@@ -28,6 +28,9 @@
 						{% else %}
 							<li><a href="{{ path("app_logout") }}">Déconnexion</a></li>
 						{% endif %}
+						{% if is_granted('ROLE_ADMIN') %}
+						<li><a href="{{ path("admin") }}">Dashboard</a></li>
+						{% endif %}
 					</ul>
 				</nav>
 			</div>

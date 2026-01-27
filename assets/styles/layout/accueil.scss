@@ -1,3 +1,4 @@
+
 .accueil-form {
     margin-top: 40px;
     padding: 40px 0;
@@ -46,6 +47,22 @@
         }
     }
 }
+
+.hero {
+    background-image: url('../../image/banner_lanterne.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 400px;
+
+    h1 {
+        text-align: center;
+        color: #ffffff;
+        font-size: 6rem;
+    }
+}
+
 
 .btn {
     display: inline-block;

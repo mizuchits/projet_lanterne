@@ -4,7 +4,11 @@
 {% endblock %}
 
 {% block body %}
+<section class="hero">
+			<h1>Collection de Lanterne en papier</h1>
+		</section>
 	<div class="container">
+		
 		<section>
 			<h2>Nouveauté</h2>
 			<ul>
@@ -13,11 +17,12 @@
 						<img src="{{ asset('uploads/images/' ~ lanterne.imageName) }}" alt="Image de la lanterne" class="card_image">
 						<p>{{ lanterne.name }}
 						</p>
+						<p class="detail-price">{{ lanterne.prix }}€</p>
 						<p>{{lanterne.spe}}</p>
-						<p>{{ lanterne.description|length > 30 ? lanterne.description[:30] ~ '...' : lanterne.description }}</p>
+						<p>{{ lanterne.description|length > 80 ? lanterne.description[:80] ~ '...' : lanterne.description }}</p>
 						<div class="btn_container">
 							<a href="{{path('app_detail',{'id' : lanterne.id})}}" class="btn">Voir plus</a>
-						{% if app.user and lanterne.user and app.user.id == lanterne.user.id %}
+							{% if app.user and lanterne.user and app.user.id == lanterne.user.id %}
 								<a href="{{path('app_edit_lanterne',{'id' : lanterne.id})}}" class="btn btn-edit">Éditer</a>
 								<a href="{{path('app_delete_lanterne',{'id' : lanterne.id})}}" class="btn btn-delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette lanterne ?');">Supprimer</a>
 							{% endif %}
