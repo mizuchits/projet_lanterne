@@ -14,6 +14,10 @@ header {
             list-style: none;
             gap: 30px;
 
+            @media screen and (max-width: 768px) {
+                gap: 5px;
+            }
+
             li {
                 a {
                     text-decoration: none;
